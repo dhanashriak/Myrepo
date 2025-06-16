@@ -1,0 +1,12 @@
+<h2>Select Items to Order</h2>
+
+<mat-selection-list [(ngModel)]="selectedMenuIds">
+  <mat-list-option *ngFor="let item of menuItems" [value]="item.id">
+    {{ item.name }} - ₹{{ item.price }}
+  </mat-list-option>
+</mat-selection-list>
+
+<br />
+<button mat-raised-button color="primary" (click)="placeOrder()" [disabled]="!selectedMenuIds.length">
+  Place Order
+</button>

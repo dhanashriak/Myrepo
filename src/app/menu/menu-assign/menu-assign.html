@@ -1,0 +1,21 @@
+<h3>Assign Menu to Restaurant</h3>
+
+<mat-form-field appearance="fill" style="width: 100%;">
+  <mat-label>Select Restaurant</mat-label>
+  <mat-select [(ngModel)]="selectedRestaurantId" (selectionChange)="updateSelected($event.value)">
+    <mat-option *ngFor="let r of (restaurants$ | async) ?? []" [value]="r.id">
+      {{ r.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div *ngIf="selectedRestaurantId">
+  <h4>Available Menus</h4>
+  <mat-selection-list [(ngModel)]="selectedMenuIds">
+    <mat-list-option *ngFor="let item of (menuItems$ | async) ?? []" [value]="item.id">
+      {{ item.name }} (₹{{ item.price }})
+    </mat-list-option>
+  </mat-selection-list>
+
+  <button mat-raised-button color="primary" (click)="save()">Assign Menus</button>
+</div>

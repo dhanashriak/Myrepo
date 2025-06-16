@@ -1,0 +1,9 @@
+<h2>Order Confirmation</h2>
+
+<mat-card *ngFor="let item of orderItems">
+  <mat-card-title>{{ item.name }}</mat-card-title>
+  <mat-card-content>Price: ₹{{ item.price }}</mat-card-content>
+</mat-card>
+
+<hr />
+<h3>Total: ₹{{ getTotal() }}</h3>

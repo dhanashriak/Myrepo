@@ -1,0 +1,14 @@
+<h2>Select a Restaurant</h2>
+<div *ngFor="let r of (restaurants$ | async) ?? []" class="card">
+  <mat-card>
+    <mat-card-title>{{ r.name }}</mat-card-title>
+    <mat-card-content>
+      {{ r.cuisine }} | {{ r.location }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="selectRestaurant(r.id)">
+        View Menu
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
